@@ -11,6 +11,7 @@
     <div id="app">
         <!--el id del div es el que pasa al script-->
         <h1> {{ titulo }} </h1>
+        <h1> {{ mayusculasTexto }} </h1>
         <h2> {{ cantidad }} </h2>
         <h2> {{ cantidad >= 1000 ? 'Es mayor o igual a mil': 'Es menor a mil' }} </h2>
         <!--colorCantidad es equivalente a colocar
@@ -59,8 +60,26 @@
         <hr>
         <button @click="disminuirSaldo(100)" :disabled="desactivar">Disminuir Saldo</button>
 
+        <!--Bloque que va a ser llevado al componente footer
+        <div class="bg-dark py-3 mt-2 text-white">
+            <h3>Footer de mi sitio web</h3>
+        </div>
+        -->
+        <footer-banco></footer-banco>
+        <!--Trabajo con props
+        cantidad viene del main.js, el nombre :valor para el caso
+        es el que viene del componente propiamente -->
+        <footer-banco 
+            :valor = "cantidad" 
+            fecha = "noviembre 16"
+        ></footer-banco>
+        
     </div>
+    <!--Primero se llama el main porque al inicio se llama app a la que
+    estamos accediendo, y si no vamos al main primero no tendríamos
+    cómo acceder desde footer a un llamado que va desde el main-->
     <script src="main.js"></script>
+    <script src="componentes/Footer.js"></script>
     <!--Siempre el mount debe ir después del archivo js asociado-->
     <script>
         const mountedApp = app.mount('#app');
